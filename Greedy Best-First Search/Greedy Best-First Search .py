@@ -6,7 +6,7 @@ goal_state = (
     (7, 8, 0)
 )
 
-# Manhattan Distance heuristic
+
 def manhattan_distance(state):
     distance = 0
     for i in range(3):
@@ -44,7 +44,13 @@ def greedy_best_first_search(start):
         _, current = heapq.heappop(pq)
 
         if current == goal_state:
-            return parent
+            # Build the path from start to goal
+            path = []
+            while current:
+                path.append(current)
+                current = parent[current]
+            path.reverse()
+            return path
 
         visited.add(current)
 
@@ -55,12 +61,20 @@ def greedy_best_first_search(start):
 
     return None
 
-# Example initial state
+
 start_state = (
     (1, 2, 3),
     (4, 0, 6),
     (7, 5, 8)
 )
 
-result = greedy_best_first_search(start_state)
-print("Solution found!" if result else "No solution found.")
+solution_path = greedy_best_first_search(start_state)
+
+if solution_path:
+    print("Solution found! Steps:")
+    for step_num, state in enumerate(solution_path):
+        print(f"\nStep {step_num}:")
+        for row in state:
+            print(row)
+else:
+    print("No solution found.")

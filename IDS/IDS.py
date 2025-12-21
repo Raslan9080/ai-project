@@ -75,7 +75,7 @@ def ids(start_state, max_depth):
     return None
 
 
-# ------------------ Main ------------------
+
 
 if name == "main":
     initial_state = (
