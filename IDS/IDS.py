@@ -75,6 +75,7 @@ def ids(start_state, max_depth):
     return None
 
 
+# ------------------ Main ------------------
 
 if __name__ == "__main__":
     initial_state = (
@@ -86,9 +87,8 @@ if __name__ == "__main__":
     solution = ids(initial_state, max_depth=20)
 
     if solution:
-        print("Solution found!\nSteps:")
-        for step_num, step in enumerate(solution):
-            print(f"Step {step_num}:")
+        print("Solution found!\n")
+        for step in solution:
             for row in step:
                 print(row)
             print("-----")
